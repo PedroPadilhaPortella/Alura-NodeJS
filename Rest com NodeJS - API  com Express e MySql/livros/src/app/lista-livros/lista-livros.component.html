@@ -1,0 +1,38 @@
+<nav class="navbar navbar-light bg-light">
+    <a [routerLink]="['/novo']" class="btn btn-primary">Novo Livro</a>
+    <app-search (onTyping)="filter = $event" [value]="filter"></app-search>
+</nav>
+
+<div class="container-fluid px-5 py-3">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Editora</th>
+                <th scope="col">Quantidade de Páginas</th>
+                <th scope="col">Quantidade de Exemplares</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let livro of livros | filterByTitle: filter  as Livro">
+                <th scope="row">{{ livro.Id }}</th>
+                <td>{{ livro.Titulo }}</td>
+                <td>{{ livro.Autor }}</td>
+                <td>{{ livro.Editora }}</td>
+                <td>{{ livro.QuantidadeDePaginas }}</td>
+                <td>{{ livro.QuantidadeDeExemplares }}</td>
+                <td>
+                    <a [routerLink]="['/editar', livro.Id]" class="btn btn-warning btn-sm mx-2">
+                        Editar <i class="fa fa-edit"></i>
+                    </a>
+                    <button type="button" (click)="excluirLivro(livro.Id)" class="btn btn-danger btn-sm">
+                        Excluir X
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,53 @@
+<div class="container main-container my-5">
+    <h3>Novo Livro </h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-10">
+            <form (submit)="adicionarLivro()" [formGroup]="livroForm">
+
+                <div class="form-group">
+                    <label class="control-label">Título</label>
+                    <input class="form-control" id="Titulo" type="text" placeholder="Título" formControlName="Titulo"/>
+                    <app-mensagem *ngIf="livroForm.get('Titulo')?.errors && livroForm.get('Titulo')?.touched" 
+                        mensagem="Título Requerido"></app-mensagem>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Autor</label>
+                    <input class="form-control" id="Autor" type="text" placeholder="Autor" formControlName="Autor"/>
+                    <app-mensagem *ngIf="livroForm.get('Autor')?.errors && livroForm.get('Autor')?.touched" 
+                        mensagem="Autor Requerido"></app-mensagem>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Editora</label>
+                        <input class="form-control" id="Editora" type="text" placeholder="Editora" formControlName="Editora"/>
+                        <app-mensagem *ngIf="livroForm.get('Editora')?.errors && livroForm.get('Editora')?.touched" 
+                        mensagem="Editora Requerido"></app-mensagem>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Quantidade de Páginas</label>
+                    <input class="form-control" id="QuantidadeDePaginas" type="number" 
+                        placeholder="QuantidadeDePaginas" formControlName="QuantidadeDePaginas"/>
+                    <app-mensagem *ngIf="livroForm.get('QuantidadeDePaginas')?.errors && livroForm.get('QuantidadeDePaginas')?.touched" 
+                        mensagem="Quantidade de Páginas Requerido"></app-mensagem>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Quantidade de Exemplares</label>
+                    <input class="form-control" id="QuantidadeDeExemplares" type="number" 
+                        placeholder="QuantidadeDeExemplares" formControlName="QuantidadeDeExemplares"/>
+                    <app-mensagem *ngIf="livroForm.get('QuantidadeDeExemplares')?.errors && livroForm.get('QuantidadeDeExemplares')?.touched" 
+                        mensagem="Quantidade de Exemplares Requerido"></app-mensagem>
+                </div>
+
+
+                <div class="form-group">
+                    <button type="submit" [disabled]="livroForm.invalid" class="btn btn-primary">Salvar</button> &nbsp; 
+                    <a class="btn btn-info" href="/livros">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

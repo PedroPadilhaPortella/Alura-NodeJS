@@ -1,0 +1,4 @@
+<form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="search..." autofocus
+            (keyup)="debounce.next($event.target.value)" [value]="value">
+</form>
