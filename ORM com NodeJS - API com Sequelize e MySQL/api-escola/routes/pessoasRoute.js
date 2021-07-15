@@ -12,6 +12,8 @@ router.get('/pessoas/:id', PessoaController.getById);
 
 router.get('/pessoas/:id/matriculas/', PessoaController.getMatriculas);
 
+router.get('/pessoas/turmas/lotadas', PessoaController.getTurmasLotadas);
+
 /*  "nome": "Pedro H Portella",
 "ativo": true,
 "email": "pedro@gmail.com",
