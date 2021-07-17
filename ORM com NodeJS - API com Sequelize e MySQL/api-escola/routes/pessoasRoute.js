@@ -20,6 +20,8 @@ router.get('/pessoas/turmas/lotadas', PessoaController.getTurmasLotadas);
 "role": "estudante"  */
 router.post('/pessoas', PessoaController.save);
 
+router.post('/pessoas/:estudanteId/cancelar', PessoaController.cancelPessoa);
+
 router.put('/pessoas/:id', PessoaController.update);
 
 router.delete('/pessoas/:id', PessoaController.remove);

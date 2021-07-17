@@ -222,6 +222,27 @@ class PessoaController {
             return res.status(500).json({ message: err.message })
         }
     }
+    
+    static async cancelPessoa(req, res) {
+        const { estudanteId } = req.params
+        try {
+            database.sequelize.transaction(async (transacao) => {
+                await database.Pessoas.update(
+                    { ativo: false }, 
+                    { where: { id: estudanteId }}, 
+                    { transaction: transacao }
+                );
+                await database.Matriculas.update(
+                    { status: 'cancelado' },
+                    { where: { estudante_id: estudanteId }},
+                    { transaction: transacao }
+                );
+                return res.status(200).json({ message: `Matriculas dos estudante de id ${estudanteId} canceladas`})
+            });
+        } catch(err){
+            return res.status(500).json({ message: err.message })
+        }
+    }   
 }
 
 module.exports = PessoaController;
