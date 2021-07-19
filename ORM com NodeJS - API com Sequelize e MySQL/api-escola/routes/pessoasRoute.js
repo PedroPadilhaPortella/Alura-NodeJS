@@ -12,15 +12,17 @@ router.get('/pessoas/:id', PessoaController.getById);
 
 router.get('/pessoas/:id/matriculas/', PessoaController.getMatriculas);
 
+router.get('/pessoas/matriculas/:turmaId/confirmadas', PessoaController.getMatriculasByTurma);
+
 router.get('/pessoas/turmas/lotadas', PessoaController.getTurmasLotadas);
 
-/*  "nome": "Pedro H Portella",
-"ativo": true,
-"email": "pedro@gmail.com",
-"role": "estudante"  */
-router.post('/pessoas', PessoaController.save);
+router.get('/pessoas/:estudanteId/matriculas/:matriculaId', PessoaController.getMatricula);
 
-router.post('/pessoas/:estudanteId/cancelar', PessoaController.cancelPessoa);
+/*  "nome": "Pedro H Portella",
+    "ativo": true,
+    "email": "pedro@gmail.com",
+    "role": "estudante"  */
+router.post('/pessoas', PessoaController.save);
 
 router.put('/pessoas/:id', PessoaController.update);
 
@@ -29,17 +31,15 @@ router.delete('/pessoas/:id', PessoaController.remove);
 router.put('/pessoas/:id/restore', PessoaController.restore);
 
 
-router.get('/pessoas/:estudanteId/matriculas/:matriculaId', PessoaController.getMatricula);
-
 /*  {  "status": "confirmado", "turma_id": 3  }  */
-router.post('/pessoas/:estudanteId/matriculas', PessoaController.registerMatricula);
+router.post('/pessoas/:estudanteId/matriculas', PessoaController.saveMatricula);
 
 router.put('/pessoas/:estudanteId/matriculas/:matriculaId', PessoaController.updateMatricula);
 
-router.delete('/pessoas/:estudanteId/matriculas/:matriculaId', PessoaController.removeMatricula);
+router.delete('/pessoas/:estudante/matriculas/:matricula', PessoaController.removeMatricula);
 
-router.put('/pessoas/:estudanteId/matriculas/:matriculaId/restore', PessoaController.restoreMatricula);
+router.put('/pessoas/:estudante/matriculas/:matricula/restore', PessoaController.restoreMatricula);
 
-router.get('/pessoas/matriculas/:turmaId/confirmadas', PessoaController.getMatriculasByTurma);
+router.post('/pessoas/:estudanteId/cancelar', PessoaController.cancelPessoa);
 
 module.exports = router;

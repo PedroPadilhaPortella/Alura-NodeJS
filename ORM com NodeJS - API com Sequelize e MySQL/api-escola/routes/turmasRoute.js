@@ -14,6 +14,6 @@ router.put('/turmas/:id', TurmaController.update)
 
 router.delete('/turmas/:id', TurmaController.remove)
 
-router.delete('/turmas/:id/restore', TurmaController.restore)
+router.put('/turmas/:id/restore', TurmaController.restore)
 
 module.exports = router;

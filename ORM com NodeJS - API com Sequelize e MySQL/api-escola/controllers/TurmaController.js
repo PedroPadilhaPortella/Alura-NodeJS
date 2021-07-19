@@ -1,6 +1,8 @@
 const database = require('../models')
 const baseUrl = require('../environmet')
 const Op = require('sequelize').Op
+const { TurmaService } = require('../services')
+const turmaService = new TurmaService()
 
 class TurmaController {
 
@@ -13,7 +15,7 @@ class TurmaController {
             data_inicial ? where.data_inicio[Op.gte] = data_inicial: null
             data_final ? where.data_inicio[Op.lte] = data_final: null
 
-            const turmas = await database.Turmas.findAll({ where })
+            const turmas = await turmaService.getAll(where)
             return res.status(200).json(turmas)
         } catch(err) {
             return res.status(500).json({ message: err.message })
@@ -23,7 +25,7 @@ class TurmaController {
     static async getById(req, res) {
         try {
             const id = req.params.id
-            const turmaDB = await database.Turmas.findOne({ where: { id }})
+            const turmaDB = await turmaService.getById({ id })
             if(!turmaDB)  
                 return res.status(404).json({ message: `Entidade Turma de id ${id} não foi encontrado(a)` })
             return res.status(200).json(turmaDB)
@@ -35,7 +37,7 @@ class TurmaController {
     static async save(req, res) {
         try {
             let turma = req.body
-            turma = await database.Turmas.create(turma)
+            turma = await turmaService.create(turma)
             return res.status(201).json(turma)
         } catch(err) {
             return res.status(500).json({ message: err.message })
@@ -47,11 +49,11 @@ class TurmaController {
             const id = req.params.id
             let turma = req.body
 
-            const turmaDB = await database.Turmas.findOne({ where: { id }})
+            const turmaDB = await turmaService.getById({id})
             if(!turmaDB)
                 return res.status(404).json({ message: `Entidade Turma de id ${id} não foi encontrado(a)` })
 
-            await database.Turmas.update(turma, { where: { id }})
+            await turmaService.update(turma, id)
             return res.status(200).json({ GET: `${baseUrl}/turmas/${id}` })
         } catch(err) {
             return res.status(500).json({ message: err.message })
@@ -62,11 +64,11 @@ class TurmaController {
         try {
             const id = req.params.id
 
-            const turmaDB = await database.Turmas.findOne({ where: { id }})
+            const turmaDB = await turmaService.getById({id})
             if(!turmaDB)  
                 return res.status(404).json({ message: `Entidade Turma de id ${id} não foi encontrado(a)` })
             
-            await database.Turmas.destroy({where: { id }})
+            await turmaService.delete({id})
             return res.status(200).end()
         } catch(err) {
             return res.status(500).json({ message: err.message })
@@ -76,7 +78,7 @@ class TurmaController {
     static async restore(req, res) {
         try {
             const id = req.params.id
-            await database.Turmas.restore({ where: { id }})
+            await turmaService.restore({id})
             return res.status(200).end()
             
         } catch(err) {

@@ -13,6 +13,6 @@ router.put('/niveis/:id', NivelController.update)
 
 router.delete('/niveis/:id', NivelController.remove)
 
-router.delete('/niveis/:id/restore', NivelController.restore)
+router.put('/niveis/:id/restore', NivelController.restore)
 
 module.exports = router;
