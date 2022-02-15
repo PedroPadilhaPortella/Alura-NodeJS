@@ -1,0 +1,103 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "nome": "Ana Torre",
+      "ativo": true,
+      "email": "a@a.com",
+      "role": 1
+    },
+    {
+      "id": 2,
+      "nome": "Gabriel Costa",
+      "ativo": true,
+      "email": "g@g.com",
+      "role": 1
+    },
+    {
+      "id": 3,
+      "nome": "Flavia Lins",
+      "ativo": true,
+      "email": "f@f.com",
+      "role": 1
+    },
+    {
+      "id": 4,
+      "nome": "Carlos Marques",
+      "ativo": true,
+      "email": "c@c.com",
+      "role": 2
+    },
+    {
+      "id": 5,
+      "nome": "Silvia Souza",
+      "ativo": true,
+      "email": "s@s.com",
+      "role": 2
+    },
+    {
+      "nome": "Pedro Portella",
+      "email": "pedro@gmail.com",
+      "ativo": true,
+      "role": 2,
+      "id": 6
+    },
+    {
+      "id": 8,
+      "nome": "Pedro Portella",
+      "ativo": true,
+      "role": 2
+    },
+    {
+      "id": 9,
+      "nome": "Pedro Portella",
+      "email": "pedro@gmail.com",
+      "ativo": true,
+      "role": 2
+    },
+    {
+      "nome": "Marcelo",
+      "ativo": false,
+      "role": 1,
+      "id": 13
+    },
+    {
+      "nome": "Pedro",
+      "email": "pedro@gmail.com",
+      "ativo": true,
+      "role": 1,
+      "createdAt": "2020-09-22T00:00:00.000Z",
+      "id": 15
+    },
+    {
+      "nome": "Pedro",
+      "email": "pedro@gmail.com",
+      "ativo": true,
+      "role": 1,
+      "createdAt": "2020-09-22T00:00:00.000Z",
+      "id": 16
+    },
+    {
+      "nome": "Pedro",
+      "email": "pedro@gmail.com",
+      "ativo": true,
+      "role": 1,
+      "createdAt": "2020-09-22T00:00:00.000Z",
+      "id": 17
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "type": "ESTUDANTE"
+    },
+    {
+      "id": 2,
+      "type": "DOCENTE"
+    },
+    {
+      "id": 3,
+      "type": "COORDENACAO"
+    }
+  ]
+}
